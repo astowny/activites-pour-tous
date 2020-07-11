@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Activités pour tous</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://cdn.vuetifyjs.com/images/logos/favicon.ico">
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-app-bar app color="white" height="100">
+        <v-avatar class="mr-3" color="grey lighten-5" size="70">
+          <v-img contain max-height="70%" src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"></v-img>
+        </v-avatar>
+
+        <v-toolbar-title class="font-weight-black headline">
+          Activités pour tous
+        </v-toolbar-title>
+      </v-app-bar>
+
+      <v-content>
+        <section id="hero">
+          <v-row no-gutters>
+            <v-img :min-height="'calc(100vh - ' + $vuetify.application.top + 'px)'"
+              src="https://source.unsplash.com/aoz8a7jO0QI/1920x1280">
+              <v-theme-provider dark>
+                <v-overlay absolute :value=true>
+                  <v-container fill-height>
+                    <v-row align="center" class="white--text mx-auto" justify="center">
+                      <v-col class="white--text text-center" cols="12" tag="h1">
+                        <span :class="[$vuetify.breakpoint.smAndDown ? 'display-1' : 'display-2']"
+                          class="font-weight-light">
+                          BESOIN DE MOTIVATION POUR ATTEINDRE VOS OBJECTIFS ?
+                        </span>
+
+                        <br>
+
+                        <span :class="[$vuetify.breakpoint.smAndDown ? 'display-3': 'display-4']"
+                          class="font-weight-black">
+                          LES ACTIVITES PHYSIQUES POUR TOUS
+                        </span>
+
+                        <br>
+                        <span :class="[$vuetify.breakpoint.smAndDown ? 'display-1' : 'display-2']"
+                          class="font-weight-light">
+                          VOUS Y AIDERONT
+                        </span>
+                      </v-col>
+
+                      <v-btn class="align-self-end" fab outlined @click="$vuetify.goTo('#about-me')">
+                        <v-icon>mdi-chevron-double-down</v-icon>
+                      </v-btn>
+                    </v-row>
+                  </v-container>
+                </v-overlay>
+              </v-theme-provider>
+            </v-img>
+          </v-row>
+        </section>
+
+        <section id="about-me">
+          <div class="py-12"></div>
+
+          <v-container class="text-center">
+            <h2 class="display-2 font-weight-bold mb-3">Contenu</h2>
+
+            <v-responsive class="mx-auto mb-8" width="56">
+              <v-divider class="mb-1"></v-divider>
+
+              <v-divider></v-divider>
+            </v-responsive>
+
+            <v-responsive class="mx-auto title font-weight-light mb-8" max-width="900">
+              Que vous soyez sportif, débutant ou non vous pouvez le faire !
+              <br>-<br>
+              Echauffement, mobilisation des articulations inspirés du taïchi, qi gong, pilates et yoga
+              <br>-<br>
+              Renforcement musculaire progressif avec ou sans matériel (cuisses-abdo-fessiers, gainage)
+              <br>-<br>
+              Travail d’équilibre, de coordination et de mémoire
+              <br>-<br>
+              Cardio adaptée en fonction de votre niveau
+              <br>-<br>
+              Etirement, souplesse, respiration, détente, relaxation, méditation, libération de stress et bien être.
+            </v-responsive>
+
+            <!-- <v-avatar class="elevation-12 mb-12" size="128">
+              <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+            </v-avatar> -->
+
+            <div></div>
+
+            <v-btn color="grey" href="mailto:thichaptran@grmail.com" outlined large>
+              <span class="grey--text text--darken-1 font-weight-bold">
+                Contact
+              </span>
+            </v-btn>
+          </v-container>
+
+          <div class="py-12"></div>
+        </section>
+
+        <section id="features" class="grey lighten-3">
+          <div class="py-12"></div>
+
+          <v-container class="text-center">
+            <h2 class="display-2 font-weight-bold mb-3">AVANTAGES ET BIENFAITS</h2>
+
+            <v-responsive class="mx-auto mb-12" width="56">
+              <v-divider class="mb-1"></v-divider>
+
+              <v-divider></v-divider>
+            </v-responsive>
+
+            <v-row>
+              <v-col v-for="({ icon, title, text }, i) in features" :key="i" cols="12" md="4">
+                <v-card class="py-12 px-4" color="grey lighten-5" flat>
+                  <v-theme-provider dark>
+                    <div>
+                      <v-avatar color="red lighten-2" size="88">
+                        <v-icon large v-text="icon"></v-icon>
+                      </v-avatar>
+                    </div>
+                  </v-theme-provider>
+
+                  <v-card-title class="justify-center font-weight-black text-uppercase" v-text="title"></v-card-title>
+
+                  <v-card-text class="subtitle-1" v-text="text"></v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+
+          <div class="py-12"></div>
+        </section>
+
+        <section id="stats">
+          <v-parallax :height="$vuetify.breakpoint.smAndDown ? 700 : 500"
+            src="https://source.unsplash.com/Vz0RbclzG_w/1920x1280">
+            <v-overlay absolute class="d-flex flex-column align-stretch justify-center" :value=true>
+              <v-container fill-height>
+                <v-row class="mx-auto text-center">
+                  <div class="display-1">COURS INDIVIDUEL OU EN GROUPE, EN INTERIEUR OU EN EXTERIEUR (EN FONCTION DE LA
+                    METEO ET DES
+                    CONTRAINTES SANITAIRES)</div>
+                </v-row>
+              </v-container>
+            </v-overlay>
+          </v-parallax>
+        </section>
+
+        <!-- <section id="blog">
+          <div class="py-12"></div>
+
+          <v-container>
+            <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Blog</h2>
+
+            <v-responsive class="mx-auto mb-12" width="56">
+              <v-divider class="mb-1"></v-divider>
+
+              <v-divider></v-divider>
+            </v-responsive>
+
+            <v-row>
+              <v-col v-for="({ src, text, title }, i) in articles" :key="i" cols="12" md="4">
+                <v-img :src="src" class="mb-4" height="275" max-width="100%"></v-img>
+
+                <h3 class="font-weight-black mb-4 text-uppercase" v-text="title"></h3>
+
+                <div class="title font-weight-light mb-5" v-text="text"></div>
+
+                <v-btn class="ml-n4 font-weight-black" text>
+                  Continue Reading
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+
+          <div class="py-12"></div>
+        </section> -->
+
+        <v-sheet id="contact" color="#333333" dark tag="section" tile>
+          <div class="py-12"></div>
+
+          <v-container>
+            <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Contactez Thi Chap</h2>
+            <h3 class="font-weight-bold mb-3 text-uppercase text-center">Éducatrice Sportive diplômée d’état
+              fitness et APT (Activités Physiques pour Tous)</h3>
+            <v-responsive class="mx-auto mb-12" width="56">
+              <v-divider class="mb-1"></v-divider>
+
+              <v-divider></v-divider>
+            </v-responsive>
+
+            <v-theme-provider light>
+              <v-row justiy=center>
+                <v-col class="font-weight-bold mb-3 text-center text-h5" cols=12>
+                  <div>06 52 59 18 49</div>
+                  <a href="mailto:thichaptran@gmail.com">thichaptran@gmail.com</a>
+                </v-col>
+              </v-row>
+            </v-theme-provider>
+          </v-container>
+
+          <div class="py-12"></div>
+        </v-sheet>
+      </v-content>
+
+      <v-footer class="justify-center" color="#292929" height="100">
+        <div class="title font-weight-light grey--text text--lighten-1 text-center">
+          Made with 💜 by Tony DUONG
+        </div>
+      </v-footer>
+    </v-app>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data() {
+        return {
+          articles: [
+            {
+              src: 'https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+              title: 'Mobile first & Responsive',
+              text: 'Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
+            },
+            {
+              src: 'https://images.unsplash.com/photo-1475938476802-32a7e851dad1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+              title: 'Think outside the box',
+              text: 'Nam ut leo ipsum. Maecenas pretium aliquam feugiat. Aenean vel tempor est, vitae tincidunt risus. Sed sodales vestibulum nibh.',
+            },
+            {
+              src: 'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1892&q=80',
+              title: 'Small changes, big difference',
+              text: 'Vestibulum in dictum velit, in rhoncus nibh. Maecenas neque libero, interdum a dignissim in, aliquet vitae lectus. Phasellus lorem enim, luctus ut velit eget.',
+            },
+          ],
+          features: [
+            {
+              icon: 'mdi-heart-pulse',
+              title: 'Votre santé importe',
+              text: 'PRENEZ VOTRE SANTE EN MAIN EN BENEFICIANT DES BIENTFAITS DE L’ACTIVITE PHYSIQUE ET EN DECOUVRANT VOS CAPACITES SPORTIVES.',
+            },
+            {
+              icon: 'mdi-update',
+              title: 'Votre cours est adapté pour vous',
+              text: 'GYM D’ENTRETIEN POUR MAINTENIR VOTRE FORME ET VOTRE CONDITION PHYSIQUE BASEE SUR UN PROGRAMME PERSONNALISE ET ADAPTE.',
+            },
+            {
+              icon: 'mdi-car-side',
+              title: 'Votre coach se déplace chez vous',
+              text: 'VOTRE COACH SPORTIF DIPLÔMEE D’ETAT SE DEPLACE CHEZ VOUS POUR VOUS PROPOSER DIFFERENTES PRESTATIONS DE SERVICES PERSONNALISEES SELON VOS OBJECTIFS.',
+            },
+          ],
+          stats: [
+            ['', ''],
+          ],
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
