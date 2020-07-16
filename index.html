@@ -22,13 +22,19 @@
         <v-toolbar-title class="font-weight-black headline">
           Activités pour tous
         </v-toolbar-title>
+
+        <v-spacer></v-spacer>
+        <v-btn @click="$vuetify.goTo('#contact')" outlined large>
+          <span class="grey--text text--darken-1 font-weight-bold">
+            Contact
+          </span>
+        </v-btn>
       </v-app-bar>
 
-      <v-content>
+      <v-main>
         <section id="hero">
           <v-row no-gutters>
-            <v-img :min-height="'calc(100vh - ' + $vuetify.application.top + 'px)'"
-              src="https://source.unsplash.com/aoz8a7jO0QI/1920x1280">
+            <v-img :min-height="'calc(100vh - ' + $vuetify.application.top + 'px)'" src="./cours-au-parc.jpg">
               <v-theme-provider dark>
                 <v-overlay absolute :value=true>
                   <v-container fill-height>
@@ -53,7 +59,7 @@
                         </span>
                       </v-col>
 
-                      <v-btn class="align-self-end" fab outlined @click="$vuetify.goTo('#about-me')">
+                      <v-btn class="align-self-end" fab outlined @click="$vuetify.goTo('#contenu-activites')">
                         <v-icon>mdi-chevron-double-down</v-icon>
                       </v-btn>
                     </v-row>
@@ -64,7 +70,7 @@
           </v-row>
         </section>
 
-        <section id="about-me">
+        <section id="contenu-activites">
           <div class="py-12"></div>
 
           <v-container class="text-center">
@@ -90,12 +96,6 @@
               Etirement, souplesse, respiration, détente, relaxation, méditation, libération de stress et bien être.
             </v-responsive>
 
-            <!-- <v-avatar class="elevation-12 mb-12" size="128">
-              <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
-            </v-avatar> -->
-
-            <div></div>
-
             <v-btn color="grey" @click="$vuetify.goTo('#contact')" outlined large>
               <span class="grey--text text--darken-1 font-weight-bold">
                 Contact
@@ -119,7 +119,7 @@
             </v-responsive>
 
             <v-row>
-              <v-col v-for="({ icon, title, text }, i) in features" :key="i" cols="12" md="4">
+              <v-col v-for="({ icon, title, text }, i) in features" :key="i" class="h-full" cols="12" md="4">
                 <v-card class="py-12 px-4" color="grey lighten-5" flat>
                   <v-theme-provider dark>
                     <div>
@@ -129,7 +129,8 @@
                     </div>
                   </v-theme-provider>
 
-                  <v-card-title class="justify-center font-weight-black text-uppercase" v-text="title"></v-card-title>
+                  <v-card-title class="justify-center font-weight-black text-uppercase text-subtitle-1" v-text="title">
+                  </v-card-title>
 
                   <v-card-text class="subtitle-1" v-text="text"></v-card-text>
                 </v-card>
@@ -141,8 +142,7 @@
         </section>
 
         <section id="stats">
-          <v-parallax :height="$vuetify.breakpoint.smAndDown ? 700 : 500"
-            src="https://source.unsplash.com/Vz0RbclzG_w/1920x1280">
+          <v-parallax :height="$vuetify.breakpoint.smAndDown ? 700 : 500" src="./cours-en-foret.jpg">
             <v-overlay absolute class="d-flex flex-column align-stretch justify-center" :value=true>
               <v-container fill-height>
                 <v-row class="mx-auto text-center">
@@ -155,11 +155,11 @@
           </v-parallax>
         </section>
 
-        <!-- <section id="blog">
+        <section id="blog">
           <div class="py-12"></div>
 
           <v-container>
-            <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Blog</h2>
+            <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Cours en images</h2>
 
             <v-responsive class="mx-auto mb-12" width="56">
               <v-divider class="mb-1"></v-divider>
@@ -168,22 +168,16 @@
             </v-responsive>
 
             <v-row>
-              <v-col v-for="({ src, text, title }, i) in articles" :key="i" cols="12" md="4">
-                <v-img :src="src" class="mb-4" height="275" max-width="100%"></v-img>
+              <v-col v-for="({ src, alt, title }, i) in articles" :key="i" cols="12" md="4">
+                <v-img :src="src" :alt="alt" :title="title" class="mb-4" height="275" max-width="100%"></v-img>
 
-                <h3 class="font-weight-black mb-4 text-uppercase" v-text="title"></h3>
-
-                <div class="title font-weight-light mb-5" v-text="text"></div>
-
-                <v-btn class="ml-n4 font-weight-black" text>
-                  Continue Reading
-                </v-btn>
+                <h3 class="font-weight-black mb-4 text-center text-uppercase" v-text="title"></h3>
               </v-col>
             </v-row>
           </v-container>
 
           <div class="py-12"></div>
-        </section> -->
+        </section>
 
         <v-sheet id="contact" color="#333333" dark tag="section" tile>
           <div class="py-12"></div>
@@ -210,7 +204,7 @@
 
           <div class="py-12"></div>
         </v-sheet>
-      </v-content>
+      </v-main>
 
       <v-footer class="justify-center" color="#292929" height="100">
         <div class="title font-weight-light grey--text text--lighten-1 text-center">
@@ -229,25 +223,35 @@
         return {
           articles: [
             {
-              src: 'https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-              title: 'Mobile first & Responsive',
-              text: 'Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
+              src: './ensemble-en-forme-1.jpg',
+              title: 'Ensemble en forme',
+              alt: 'Activités pour tous ensemble 1',
             },
             {
-              src: 'https://images.unsplash.com/photo-1475938476802-32a7e851dad1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-              title: 'Think outside the box',
-              text: 'Nam ut leo ipsum. Maecenas pretium aliquam feugiat. Aenean vel tempor est, vitae tincidunt risus. Sed sodales vestibulum nibh.',
+              src: './ensemble-en-forme-2.jpg',
+              title: 'Ensemble en forme',
+              alt: 'Activités pour tous ensemble 2',
             },
             {
-              src: 'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1892&q=80',
-              title: 'Small changes, big difference',
-              text: 'Vestibulum in dictum velit, in rhoncus nibh. Maecenas neque libero, interdum a dignissim in, aliquet vitae lectus. Phasellus lorem enim, luctus ut velit eget.',
+              src: './cours-football.jpg',
+              title: 'Cours football',
+              alt: 'Cours football',
+            },
+            {
+              src: './cours-sur-plage.jpg',
+              title: 'Cours sur la plage',
+              alt: 'Cours sur la plage',
+            },
+            {
+              src: './cours-en-interieur.jpg',
+              title: 'Cours en intérieur',
+              alt: 'Cours en intérieur',
             },
           ],
           features: [
             {
               icon: 'mdi-heart-pulse',
-              title: 'Votre santé importe',
+              title: 'Votre santé dépend de vous',
               text: 'PRENEZ VOTRE SANTE EN MAIN EN BENEFICIANT DES BIENTFAITS DE L’ACTIVITE PHYSIQUE ET EN DECOUVRANT VOS CAPACITES SPORTIVES.',
             },
             {
