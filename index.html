@@ -9,15 +9,17 @@
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="https://img.icons8.com/office/16/000000/sports-mode.png">
+  <style>
+    .word-break-initial {
+      word-break: initial
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
     <v-app>
-      <v-app-bar app color="white" height="100">
-        <!-- <v-avatar class="mr-3" color="grey lighten-5" size="70">
-          <v-img contain max-height="70%" src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"></v-img>
-        </v-avatar> -->
+      <v-app-bar app color="white" :height="$vuetify.breakpoint.smAndDown ? '60' : '80'">
 
         <v-toolbar-title class="font-weight-black headline">
           Activités pour tous
@@ -36,7 +38,7 @@
           <v-row no-gutters>
             <v-img :min-height="'calc(100vh - ' + $vuetify.application.top + 'px)'" src="./cours-au-parc.jpg">
               <v-theme-provider dark>
-                <v-overlay absolute :value=true>
+                <v-overlay absolute opacity="0.67" :value=true>
                   <v-container fill-height>
                     <v-row align="center" class="white--text mx-auto" justify="center">
                       <v-col class="white--text text-center" cols="12" tag="h1">
@@ -47,16 +49,20 @@
 
                         <br>
 
-                        <span :class="[$vuetify.breakpoint.smAndDown ? 'display-3': 'display-4']"
+                        <span :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']"
                           class="font-weight-black">
-                          LES ACTIVITES PHYSIQUES POUR TOUS
+                          LES ACTIVITES PHYSIQUES POUR TOUS VOUS Y AIDERONT
                         </span>
-
                         <br>
-                        <span :class="[$vuetify.breakpoint.smAndDown ? 'display-1' : 'display-2']"
-                          class="font-weight-light">
-                          VOUS Y AIDERONT
-                        </span>
+                        <p class="font-weight-light" :class="[$vuetify.breakpoint.smAndDown ? 'body-2': 'body-1']">
+                          De nombreux séniors âgées adoptent un mode de vie sédentaire du fait de la baisse de leurs
+                          capacités
+                          physiques.
+                          Souvent des exercices physiques et sportives proposées ne leur conviennent plus.
+                          C'est pourquoi je vous propose des séances de gym douce adaptée aux besoins, goût et capacités
+                          physiques
+                          de ces personnes. </p>
+
                       </v-col>
 
                       <v-btn class="align-self-end" fab outlined @click="$vuetify.goTo('#contenu-activites')">
@@ -71,21 +77,37 @@
         </section>
 
         <section id="contenu-activites">
-          <div class="py-12"></div>
+          <div class="py-6"></div>
 
           <v-container class="text-center">
-            <h2 class="display-2 font-weight-bold mb-3">Contenu</h2>
 
-            <v-responsive class="mx-auto mb-8" width="56">
-              <v-divider class="mb-1"></v-divider>
+            <v-responsive class="mx-auto title mb-8" max-width="900">
+              <p>Ces activités physiques permettent de&nbsp;:
+                <br>
+                MAINTENIR SON AUTONOMIE
+                <br>
+                GARDER SON POTENTIEL PHYSIQUE (force musculaire, souplesse et articulation)
+                <br>
+                STIMULER SA MÉMOIRE
+                <br>
+                PRÉVENIR DES CHUTES
+                <br>
+                AMELIORER LA CONFIANCE EN SOI
+                <br>
+                ENTRETENIR LES GESTES DE LA VIE QUOTIDIENNE
+                <br>
+                "Activités physiques régulières diversifiées et adaptées à chacun"
+              </p>
 
-              <v-divider></v-divider>
-            </v-responsive>
-
-            <v-responsive class="mx-auto title font-weight-light mb-8" max-width="900">
-              Que vous soyez sportif, débutant ou non vous pouvez le faire !
+              Gym douce séniors mouvements lents
+              <br>-<br> Exercices adaptée aux vieillissement
+              <br>-<br> Travail sur l'équilibre, la coordination et la posture
+              <br>-<br> Entretien musculaire doux
+              <br>-<br> Prévention des chutes
+              <br>-<br> Stimulation cognitive
+              <br>-<br> Que vous soyez sportif, débutant ou non vous pouvez le faire !
               <br>-<br>
-              Echauffement, mobilisation des articulations inspirés du taïchi, qi gong, pilates et yoga
+              Échauffement, mobilisation des articulations
               <br>-<br>
               Renforcement musculaire progressif avec ou sans matériel (cuisses-abdo-fessiers, gainage)
               <br>-<br>
@@ -93,7 +115,7 @@
               <br>-<br>
               Cardio adaptée en fonction de votre niveau
               <br>-<br>
-              Etirement, souplesse, respiration, détente, relaxation, méditation, libération de stress et bien être.
+              Étirement, souplesse, respiration, détente, relaxation, méditation, libération de stress et bien être.
             </v-responsive>
 
             <v-btn color="grey" @click="$vuetify.goTo('#contact')" outlined large>
@@ -103,16 +125,18 @@
             </v-btn>
           </v-container>
 
-          <div class="py-12"></div>
+          <div class="py-6"></div>
         </section>
 
-        <section id="features" class="grey lighten-3">
-          <div class="py-12"></div>
+        <section id="bienfaits-1" class="grey lighten-3">
+          <div class="py-6"></div>
 
           <v-container class="text-center">
-            <h2 class="display-2 font-weight-bold mb-3">AVANTAGES ET BIENFAITS</h2>
+            <h2 class="font-weight-bold mb-3" :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']">
+              AVANTAGES ET BIENFAITS
+            </h2>
 
-            <v-responsive class="mx-auto mb-12" width="56">
+            <v-responsive class="mx-auto mb-6" width="56">
               <v-divider class="mb-1"></v-divider>
 
               <v-divider></v-divider>
@@ -120,7 +144,7 @@
 
             <v-row>
               <v-col v-for="({ icon, title, text }, i) in features" :key="i" class="h-full" cols="12" md="4">
-                <v-card class="py-12 px-4" color="grey lighten-5" flat>
+                <v-card class="py-6 px-4" color="grey lighten-5" flat>
                   <v-theme-provider dark>
                     <div>
                       <v-avatar color="red lighten-2" size="88">
@@ -129,7 +153,9 @@
                     </div>
                   </v-theme-provider>
 
-                  <v-card-title class="justify-center font-weight-black text-uppercase text-subtitle-1" v-text="title">
+                  <v-card-title
+                    class="justify-center font-weight-black text-uppercase text-subtitle-1 word-break-initial"
+                    v-text="title">
                   </v-card-title>
 
                   <v-card-text class="subtitle-1" v-text="text"></v-card-text>
@@ -138,7 +164,40 @@
             </v-row>
           </v-container>
 
-          <div class="py-12"></div>
+          <div class="py-6"></div>
+        </section>
+
+        <section id="bienfaits-2">
+          <div class="py-6"></div>
+          <v-container>
+            <v-row>
+              <v-col>
+                <p class="font-weight-bold">Faire sport avec l'unique but de perdre du poids, c'est penser sport à sa
+                  moindre valeur.</p>
+                Ses bienfaits sont perceptibles dans plusieurs sphères:
+                <v-expansion-panels class="my-2">
+                  <v-expansion-panel v-for="(item, index) in bienfaits2" :key="'bienfait2-'+index">
+                    <v-expansion-panel-header>
+                      <h3>{{ item.title }}</h3>
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <ul>
+                        <li v-for="(li, i) in item.lis" :key="'li' + i">
+                          {{ li }}
+                        </li>
+                      </ul>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+                <p class="font-italic">Une pratique régulière à raison de 3 à 4 fois est conseillée pour avoir les
+                  effets souhaitables. La
+                  pratique n'est pas à
+                  limiter selon l'âge mais à adapter.</p>
+              </v-col>
+            </v-row>
+          </v-container>
+
+          <div class="py-6"></div>
         </section>
 
         <section id="stats">
@@ -146,22 +205,23 @@
             <v-overlay absolute class="d-flex flex-column align-stretch justify-center" :value=true>
               <v-container fill-height>
                 <v-row class="mx-auto text-center">
-                  <div class="display-1">COURS INDIVIDUEL OU EN GROUPE, EN INTERIEUR OU EN EXTERIEUR (EN FONCTION DE LA
-                    METEO ET DES
-                    CONTRAINTES SANITAIRES)</div>
+                  <div :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']">COURS INDIVIDUEL OU EN
+                    GROUPE, EN INTERIEUR OU EN EXTERIEUR
+                  </div>
                 </v-row>
               </v-container>
             </v-overlay>
           </v-parallax>
         </section>
 
-        <section id="blog">
-          <div class="py-12"></div>
+        <section id="cours-en-images">
+          <div class="py-6"></div>
 
           <v-container>
-            <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Cours en images</h2>
+            <h2 class="font-weight-bold mb-3 text-uppercase text-center"
+              :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']">Cours en images</h2>
 
-            <v-responsive class="mx-auto mb-12" width="56">
+            <v-responsive class="mx-auto mb-6" width="56">
               <v-divider class="mb-1"></v-divider>
 
               <v-divider></v-divider>
@@ -176,21 +236,23 @@
             </v-row>
           </v-container>
 
-          <div class="py-12"></div>
+          <div class="py-6"></div>
         </section>
 
         <v-sheet id="contact" color="#333333" dark tag="section" tile>
-          <div class="py-12"></div>
+          <div class="py-6"></div>
 
           <v-container>
-            <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Contactez Thi Chap</h2>
-            <h3 class="font-weight-bold mb-3 text-uppercase text-center">Éducatrice Sportive diplômée d’état
-              fitness et APT (Activités Physiques pour Tous)</h3>
+            <h2 class="font-weight-bold mb-3 text-uppercase text-center"
+              :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']">Contactez Thi Chap</h2>
+
             <v-responsive class="mx-auto mb-12" width="56">
               <v-divider class="mb-1"></v-divider>
 
               <v-divider></v-divider>
             </v-responsive>
+            <h3 class="font-weight-bold mb-3 text-uppercase text-center">Éducatrice Sportive diplômée d’état
+              fitness et APT (Activités Physiques pour Tous)</h3>
 
             <v-theme-provider light>
               <v-row justiy=center>
@@ -202,7 +264,7 @@
             </v-theme-provider>
           </v-container>
 
-          <div class="py-12"></div>
+          <div class="py-6"></div>
         </v-sheet>
       </v-main>
 
@@ -224,29 +286,19 @@
         return {
           articles: [
             {
-              src: './ensemble-en-forme-1.jpg',
-              title: 'Ensemble en forme',
-              alt: 'Activités pour tous ensemble 1',
-            },
-            {
-              src: './ensemble-en-forme-2.jpg',
-              title: 'Ensemble en forme',
-              alt: 'Activités pour tous ensemble 2',
-            },
-            {
-              src: './cours-football.jpg',
-              title: 'Cours football',
-              alt: 'Cours football',
+              src: './entrainement-football.jpg',
+              title: 'entraînement de football',
+              alt: 'entraînement de football',
             },
             {
               src: './cours-sur-plage.jpg',
-              title: 'Cours sur la plage',
-              alt: 'Cours sur la plage',
+              title: 'Sur la plage',
+              alt: 'Sur la plage',
             },
             {
               src: './cours-en-interieur.jpg',
-              title: 'Cours en intérieur',
-              alt: 'Cours en intérieur',
+              title: 'En intérieur',
+              alt: 'En intérieur',
             },
           ],
           features: [
@@ -266,8 +318,39 @@
               text: 'VOTRE COACH SPORTIF DIPLÔMEE D’ETAT SE DEPLACE CHEZ VOUS POUR VOUS PROPOSER DIFFERENTES PRESTATIONS DE SERVICES PERSONNALISEES SELON VOS OBJECTIFS.',
             },
           ],
-          stats: [
-            ['', ''],
+          bienfaits2: [
+            {
+              title: 'BIENFAITS DU SPORT SUR SA SANTÉ',
+              lis: [
+                "Diminue le risque des maladies cardio-vasculaires et le risque d'hypertension artérielle",
+                "Améliore l'endurance de votre organisme, augmente votre résistance et votre souplesse,",
+                "Garde des os solides et prévient ainsi l’ostéoporose,",
+                "Prévient les lombalgies et la récurrence des symptômes,",
+                "Bénéfique pour les rhumatismes inflammatoires chroniques,",
+                "Permet de garder des fonctions immunitaires efficaces.",
+              ]
+            },
+            {
+              title: 'BIENFAITS POUR LA PEAU',
+              lis: [
+                "À adopter sans tarder si vous souhaitez conserver l'élasticité de votre peau. Une véritable cure de jouvence!.",
+              ]
+            },
+            {
+              title: 'BIENFAITS POUR LE CERVEAU',
+              lis: [
+                "Dans la maladie d'Alzheimer, elle joue aussi un rôle auprès des malades qui voient leur taux de mortalité et leur risque de chutes diminuer.",
+              ]
+            },
+            {
+              title: 'BIENFAITS SUR LE MENTAL',
+              lis: [
+                "L'activité physique a également des conséquences positives d'ordre psychologique, elle atténue ainsi le syndrome dépressif et les anxiétés,",
+                "Le sommeil est favorisé sauf si la pratique sportive a lieu le soir, dans ce cas elle est alors stimulante,",
+                "Effets sur la bonne humeur grâce à l'endorphine libérée pendant l’activité physique favorisant plaisir et euphorie,",
+                "Enfant, le sport influe sur l'état de santé en ralentissant par exemple l'évolution des facteurs de risque responsables des maladies chroniques. Durant l'adolescence, il permet d'avoir une meilleure estime de soi, une réduction du stress (dû à production d’hormones appelées endorphines) et de l’anxiété."
+              ]
+            },
           ],
         }
       }
