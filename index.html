@@ -8,10 +8,30 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="https://img.icons8.com/office/16/000000/sports-mode.png">
+  <link rel="shortcut icon" href="./tran-logo-02.svg">
   <style>
+    body {
+      font-size: 22px;
+    }
+
     .word-break-initial {
       word-break: initial
+    }
+
+    .corail--text {
+      color: rgb(216, 44, 37)
+    }
+
+    .corail {
+      background-color: rgb(216, 44, 37) !important;
+    }
+
+    .corail--border {
+      border-color: rgb(216, 44, 37);
+    }
+
+    .fs- {
+      font-size: 40px;
     }
   </style>
 </head>
@@ -19,15 +39,18 @@
 <body>
   <div id="app">
     <v-app>
-      <v-app-bar app color="white" :height="$vuetify.breakpoint.smAndDown ? '60' : '80'">
+      <v-app-bar app class="corail" :height="$vuetify.breakpoint.smAndDown ? '60' : '80'">
 
-        <v-toolbar-title class="font-weight-black headline">
+        <v-toolbar-title class="font-weight-black white--text headline">
+          <v-avatar class="grey lighten-4">
+            <v-img class="white--text" src="tran-logo-02.svg" alt="Logo activités pour tous" />
+          </v-avatar>
           Activités pour tous
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
-        <v-btn @click="$vuetify.goTo('#contact')" outlined large>
-          <span class="grey--text text--darken-1 font-weight-bold">
+        <v-btn color="white" @click="$vuetify.goTo('#contact')" outlined large>
+          <span class="white--text text--darken-1 font-weight-bold">
             Contact
           </span>
         </v-btn>
@@ -42,27 +65,26 @@
                   <v-container fill-height>
                     <v-row align="center" class="white--text mx-auto" justify="center">
                       <v-col class="white--text text-center" cols="12" tag="h1">
-                        <span :class="[$vuetify.breakpoint.smAndDown ? 'display-1' : 'display-2']"
-                          class="font-weight-light">
+                        <span class="font-weight-light fs-">
                           BESOIN DE MOTIVATION POUR ATTEINDRE VOS OBJECTIFS ?
                         </span>
 
                         <br>
 
-                        <span :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']"
-                          class="font-weight-black">
+                        <span class="font-weight-black fs-">
                           LES ACTIVITES PHYSIQUES POUR TOUS VOUS Y AIDERONT
                         </span>
-                        <br>
-                        <p class="font-weight-light" :class="[$vuetify.breakpoint.smAndDown ? 'body-2': 'body-1']">
-                          De nombreux séniors âgées adoptent un mode de vie sédentaire du fait de la baisse de leurs
-                          capacités
-                          physiques.
-                          Souvent des exercices physiques et sportives proposées ne leur conviennent plus.
-                          C'est pourquoi je vous propose des séances de gym douce adaptée aux besoins, goût et capacités
-                          physiques
-                          de ces personnes. </p>
 
+                      </v-col>
+                      <v-col cols="12">
+                        <p class="font-weight-light text-center">
+                          De nombreux séniors adoptent un mode de vie sédentaire du fait de la baisse de leurs
+                          capacités physiques.
+                          Souvent des exercices physiques et sportives proposées ne leur conviennent plus.
+                          C'est pourquoi je vous propose des séances de gym douce adaptées aux besoins, goût et
+                          capacités
+                          physiques
+                          de chacun. </p>
                       </v-col>
 
                       <v-btn class="align-self-end" fab outlined @click="$vuetify.goTo('#contenu-activites')">
@@ -99,8 +121,8 @@
                 "Activités physiques régulières diversifiées et adaptées à chacun"
               </p>
 
-              Gym douce séniors mouvements lents
-              <br>-<br> Exercices adaptée aux vieillissement
+              Gym douce (mouvements lents)
+              <br>-<br> Exercices adaptés au vieillissement
               <br>-<br> Travail sur l'équilibre, la coordination et la posture
               <br>-<br> Entretien musculaire doux
               <br>-<br> Prévention des chutes
@@ -113,13 +135,13 @@
               <br>-<br>
               Travail d’équilibre, de coordination et de mémoire
               <br>-<br>
-              Cardio adaptée en fonction de votre niveau
+              Cardio adapté en fonction de votre niveau
               <br>-<br>
-              Étirement, souplesse, respiration, détente, relaxation, méditation, libération de stress et bien être.
+              Étirement, souplesse, respiration, détente, relaxation, méditation, libération de stress et bien-être.
             </v-responsive>
 
-            <v-btn color="grey" @click="$vuetify.goTo('#contact')" outlined large>
-              <span class="grey--text text--darken-1 font-weight-bold">
+            <v-btn class="corail--border" @click="$vuetify.goTo('#contact')" outlined large>
+              <span class="corail--text text--darken-1 font-weight-bold">
                 Contact
               </span>
             </v-btn>
@@ -132,7 +154,7 @@
           <div class="py-6"></div>
 
           <v-container class="text-center">
-            <h2 class="font-weight-bold mb-3" :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']">
+            <h2 class="font-weight-bold mb-3 fs-">
               AVANTAGES ET BIENFAITS
             </h2>
 
@@ -158,7 +180,7 @@
                     v-text="title">
                   </v-card-title>
 
-                  <v-card-text class="subtitle-1" v-text="text"></v-card-text>
+                  <v-card-text class="subtitle-1" v-html="text"></v-card-text>
                 </v-card>
               </v-col>
             </v-row>
@@ -172,8 +194,6 @@
           <v-container>
             <v-row>
               <v-col>
-                <p class="font-weight-bold">Faire sport avec l'unique but de perdre du poids, c'est penser sport à sa
-                  moindre valeur.</p>
                 Ses bienfaits sont perceptibles dans plusieurs sphères:
                 <v-expansion-panels class="my-2">
                   <v-expansion-panel v-for="(item, index) in bienfaits2" :key="'bienfait2-'+index">
@@ -205,8 +225,10 @@
             <v-overlay absolute class="d-flex flex-column align-stretch justify-center" :value=true>
               <v-container fill-height>
                 <v-row class="mx-auto text-center">
-                  <div :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']">COURS INDIVIDUEL OU EN
-                    GROUPE, EN INTERIEUR OU EN EXTERIEUR
+                  <div class="mx-auto text-center" :class="[$vuetify.breakpoint.smAndDown ? 'display-1': 'display-3']">
+                    COURS
+                    INDIVIDUEL OU EN
+                    GROUPE,<br>EN INTERIEUR OU EN EXTERIEUR
                   </div>
                 </v-row>
               </v-container>
@@ -271,7 +293,6 @@
       <v-footer class="justify-center" color="#292929" height="100">
         <div class="title font-weight-light grey--text text--lighten-1 text-center">
           Made with 💜 by Tony DUONG
-          <div class="caption"><a href="https://icons8.com/icon/24427/sports-mode">Sports Mode icon by Icons8</a></div>
         </div>
       </v-footer>
     </v-app>
@@ -305,17 +326,17 @@
             {
               icon: 'mdi-heart-pulse',
               title: 'Votre santé dépend de vous',
-              text: 'PRENEZ VOTRE SANTE EN MAIN EN BENEFICIANT DES BIENTFAITS DE L’ACTIVITE PHYSIQUE ET EN DECOUVRANT VOS CAPACITES SPORTIVES.',
+              text: 'PRENEZ VOTRE SANTE EN MAIN EN BENEFICIANT DES BIENTFAITS DE L’ACTIVITE PHYSIQUE ET EN DECOUVRANT <br>VOS CAPACITES SPORTIVES.',
             },
             {
               icon: 'mdi-update',
-              title: 'Votre cours est adapté pour vous',
-              text: 'GYM D’ENTRETIEN POUR MAINTENIR VOTRE FORME ET VOTRE CONDITION PHYSIQUE BASEE SUR UN PROGRAMME PERSONNALISE ET ADAPTE.',
+              title: 'Votre cours est adapté',
+              text: 'GYM D’ENTRETIEN POUR MAINTENIR VOTRE FORME ET VOTRE CONDITION PHYSIQUE BASEE SUR <br>UN PROGRAMME PERSONNALISE ET ADAPTE.',
             },
             {
               icon: 'mdi-car-side',
               title: 'Votre coach se déplace chez vous',
-              text: 'VOTRE COACH SPORTIF DIPLÔMEE D’ETAT SE DEPLACE CHEZ VOUS POUR VOUS PROPOSER DIFFERENTES PRESTATIONS DE SERVICES PERSONNALISEES SELON VOS OBJECTIFS.',
+              text: 'VOTRE COACH SPORTIF DIPLÔMEE D’ETAT SE DEPLACE CHEZ VOUS ET VOUS PROPOSE DIFFERENTES PRESTATIONS DE SERVICES PERSONNALISEES SELON VOS OBJECTIFS.',
             },
           ],
           bienfaits2: [
@@ -333,7 +354,7 @@
             {
               title: 'BIENFAITS POUR LA PEAU',
               lis: [
-                "À adopter sans tarder si vous souhaitez conserver l'élasticité de votre peau. Une véritable cure de jouvence!.",
+                "À adopter sans tarder si vous souhaitez conserver l'élasticité de votre peau. Une véritable cure de jouvence !",
               ]
             },
             {
